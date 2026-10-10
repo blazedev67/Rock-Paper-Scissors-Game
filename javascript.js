@@ -22,15 +22,16 @@ function getComputerChoice(){
     
 }
 
-console.log(getComputerChoice());
 
 // Function to get Human choice 
 function getHumanChoice(){
     let humanChoice = prompt('Please pick your choice [Rock | Paper | Scissors]');
+    humanChoice = humanChoice.toLowerCase();
     return humanChoice;
 }
 
-console.log(getHumanChoice());
+
+
 
 //Global variables to store human and computer scores
 
