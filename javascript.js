@@ -34,15 +34,57 @@ function getHumanChoice(){
 
 
 //Global variables to store human and computer scores
+ 
+function playGame(){
 
-let humanScore = 0;
-let computerScore = 0;
+
+   let humanScore = 0;
+    let computerScore = 0;
 
 function playRound(humanChoice,computerChoice){
 
-    if ( humanChoice ===) {
-        
+    
+
+// draw case
+    if ( humanChoice === computerChoice) {
+        console.log(` It's a draw! Both players chose ${humanChoice}.`);
+       
+        // win case
+    } else  if ( (humanChoice === 'rock' && computerChoice === 'scissors') || 
+                (humanChoice === 'paper' && computerChoice === 'rock') ||
+                (humanChoice === 'scissors' && computerChoice === 'paper')){
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                    humanScore += 1;
+                    // lose case     
     } else {
-        
+                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                    computerScore += 1;
+                    
     }
 }
+
+
+playRound(getHumanChoice(),getComputerChoice());
+playRound(getHumanChoice(),getComputerChoice());
+playRound(getHumanChoice(),getComputerChoice());
+playRound(getHumanChoice(),getComputerChoice());
+playRound(getHumanChoice(),getComputerChoice());
+
+console.log(`Your score: ${humanScore}
+Computer score: ${computerScore}`);
+
+if (humanScore > computerScore) {
+    console.log('Congratulations you win!');
+    
+} else if (humanScore === computerScore) {
+    console.log(`It's a draw! better luck next time.`);
+    
+}
+ else {
+    console.log('Game Over! You fought well, but fell short.');
+    
+}
+}
+
+
+playGame();
