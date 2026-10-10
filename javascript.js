@@ -1,5 +1,7 @@
 console.log('Welcome to RPS game ');
 
+
+// Function to get computer choice 
 function getComputerChoice(){
    let result = Math.floor(Math.random() * 3) +1 ;
 
@@ -22,9 +24,15 @@ function getComputerChoice(){
 
 console.log(getComputerChoice());
 
+// Function to get Human choice 
 function getHumanChoice(){
     let humanChoice = prompt('Please pick your choice [Rock | Paper | Scissors]');
     return humanChoice;
 }
 
 console.log(getHumanChoice());
+
+//Global variables to store human and computer scores
+
+let humanScore = 0;
+let computerScore = 0;
