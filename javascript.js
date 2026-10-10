@@ -7,13 +7,13 @@ function getComputerChoice(){
 
     switch (result) {
         case 1:
-            result ='Rock';
+            result ='rock';
             break;
         case 2:
-            result = 'Paper';
+            result = 'paper';
             break;
         case 3:
-            result = 'Scissors';
+            result = 'scissors';
             break;
     }
  
@@ -37,3 +37,12 @@ function getHumanChoice(){
 
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice,computerChoice){
+
+    if ( humanChoice ===) {
+        
+    } else {
+        
+    }
+}
