@@ -1,8 +1,19 @@
 console.log('Welcome to RPS game ');
 
+//Global variables to store scores
+
+let humanScore = 0;
+let computerScore = 0;
+
+// Select HTML elements 
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const results = document.querySelector('#results');
 
 // Function to get computer choice 
-function getComputerChoice(){
+ function getComputerChoice(){
    let result = Math.floor(Math.random() * 3) +1 ;
 
     switch (result) {
@@ -20,71 +31,65 @@ function getComputerChoice(){
     return result;
   
     
-}
+} 
 
-
-// Function to get Human choice 
-function getHumanChoice(){
-    let humanChoice = prompt('Please pick your choice [Rock | Paper | Scissors]');
-    humanChoice = humanChoice.toLowerCase();
-    return humanChoice;
-}
-
-
-
-
-//Global variables to store human and computer scores
- 
-function playGame(){
-
-
-   let humanScore = 0;
-    let computerScore = 0;
-
+// Function to play one round 
 function playRound(humanChoice,computerChoice){
 
-    
+    // Check if the game has already ended 
+        if(humanScore === 5 || computerScore === 5){
+            return;
+        }
 
-// draw case
-    if ( humanChoice === computerChoice) {
-        console.log(` It's a draw! Both players chose ${humanChoice}.`);
+        // Draw case
+        if ( humanChoice === computerChoice) {
+        results.textContent =` It's a draw! Both players chose ${humanChoice}.`;
        
         // win case
     } else  if ( (humanChoice === 'rock' && computerChoice === 'scissors') || 
                 (humanChoice === 'paper' && computerChoice === 'rock') ||
                 (humanChoice === 'scissors' && computerChoice === 'paper')){
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                    results.textContent = `You win! ${humanChoice} beats ${computerChoice}. `;
                     humanScore += 1;
+
                     // lose case     
     } else {
-                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                    results.textContent = `You lose! ${computerChoice} beats ${humanChoice}. `;
                     computerScore += 1;
                     
     }
-}
 
+    // Display running score 
+    results.textContent += `
+    Your score: ${humanScore} 
+    Computer score: ${computerScore}`;
 
-playRound(getHumanChoice(),getComputerChoice());
-playRound(getHumanChoice(),getComputerChoice());
-playRound(getHumanChoice(),getComputerChoice());
-playRound(getHumanChoice(),getComputerChoice());
-playRound(getHumanChoice(),getComputerChoice());
-
-console.log(`Your score: ${humanScore}
-Computer score: ${computerScore}`);
-
-if (humanScore > computerScore) {
-    console.log('Congratulations you win!');
+ // Announce the overall winner 
+if (humanScore === 5) {
+    results.textContent += '\nCongratulations you won the game!';
     
-} else if (humanScore === computerScore) {
-    console.log(`It's a draw! better luck next time.`);
-    
-}
- else {
-    console.log('Game Over! You fought well, but fell short.');
-    
-}
+} 
+ else if (computerScore === 5){
+    results.textContent += '\nGame Over! You fought well, but fell short.';  
 }
 
+}
 
-playGame();
+// Event listeners for the three buttons 
+rock.addEventListener('click', () => {
+    playRound('rock', getComputerChoice())
+});
+
+paper.addEventListener('click', () => {
+    playRound('paper', getComputerChoice())
+});
+
+scissors.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice())
+});
+
+
+
+
+
+
